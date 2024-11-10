@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutterassignmentapp/Features/Pages/RepoScreen/Data/Model/GistModel.dart';
 
 import 'package:flutterassignmentapp/Features/Pages/RepoScreen/Presentation/bloc/git_repo_list_bloc.dart';
 
@@ -51,12 +53,22 @@ class _RepoScreenState extends State<RepoScreen> {
               itemCount: state.gists.length,
               itemBuilder: (context, index) {
                 final GitrepoList = state.gists[index];
-                return Card(
-                  child: Container(
-                    height: 80,
-
-                    child: ListTile(
-                      title: Text(GitrepoList.createdAt.toString()),
+                return GestureDetector(
+                  onLongPress: () {
+                    _showOwnerInfoDialog(
+                        context, GitrepoList.owner.id, GitrepoList.owner.login);
+                  },
+                  child: Card(
+                    child: SizedBox(
+                      height: 80,
+                      child: ListTile(
+                          title: Text(GitrepoList.owner.login),
+                          leading: CircleAvatar(
+                            child: ClipOval(
+                              child: CachedNetworkImage(
+                                  imageUrl: GitrepoList.owner.avatarUrl),
+                            ),
+                          )),
                     ),
                   ),
                 );
@@ -70,4 +82,25 @@ class _RepoScreenState extends State<RepoScreen> {
       ),
     );
   }
+}
+
+void _showOwnerInfoDialog(
+    BuildContext context, int UserId, String UserName) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('User Id:$UserId'),
+        content: Text('Owner: $UserName'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // Close the dialog
+            },
+            child: Text('Close'),
+          ),
+        ],
+      );
+    },
+  );
 }

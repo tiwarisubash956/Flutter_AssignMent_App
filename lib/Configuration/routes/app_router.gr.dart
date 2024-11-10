@@ -8,87 +8,119 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i4;
-import 'package:flutter/material.dart' as _i5;
-import 'package:flutterassignmentapp/Features/Pages/GalleryScreen/Presentation/ImageFullScreen.dart'
+import 'package:auto_route/auto_route.dart' as _i6;
+import 'package:flutter/material.dart' as _i7;
+import 'package:flutterassignmentapp/Features/Pages/BookMarkScreen/BookMarkScreen.dart'
     as _i1;
-import 'package:flutterassignmentapp/Features/Pages/HomePage/HomePage.dart'
+import 'package:flutterassignmentapp/Features/Pages/GalleryScreen/Data/Model/ImageModel.dart'
+    as _i8;
+import 'package:flutterassignmentapp/Features/Pages/GalleryScreen/Presentation/GalleryScreen.dart'
+    as _i4;
+import 'package:flutterassignmentapp/Features/Pages/GalleryScreen/Presentation/ImageFullScreen.dart'
     as _i2;
-import 'package:flutterassignmentapp/Features/Pages/SplashPage/SplashPage.dart'
+import 'package:flutterassignmentapp/Features/Pages/HomePage/HomePage.dart'
     as _i3;
+import 'package:flutterassignmentapp/Features/Pages/SplashPage/SplashPage.dart'
+    as _i5;
 
-abstract class $AppRouter extends _i4.RootStackRouter {
+abstract class $AppRouter extends _i6.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i4.PageFactory> pagesMap = {
+  final Map<String, _i6.PageFactory> pagesMap = {
+    Bookmarkscreen.name: (routeData) {
+      return _i6.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i1.Bookmarkscreen(),
+      );
+    },
     FullImageRoute.name: (routeData) {
       final args = routeData.argsAs<FullImageRouteArgs>();
-      return _i4.AutoRoutePage<dynamic>(
+      return _i6.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i1.FullImageScreen(
+        child: _i2.FullImageScreen(
           key: args.key,
-          imageUrl: args.imageUrl,
+          image: args.image,
         ),
       );
     },
     HomeRoute.name: (routeData) {
-      return _i4.AutoRoutePage<dynamic>(
+      return _i6.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.HomePage(),
+        child: const _i3.HomePage(),
       );
     },
-    Splashpage.name: (routeData) {
-      return _i4.AutoRoutePage<dynamic>(
+    PhotoGalleryRoute.name: (routeData) {
+      return _i6.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.Splashpage(),
+        child: const _i4.PhotoGalleryPage(),
+      );
+    },
+    SplashRoute.name: (routeData) {
+      return _i6.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i5.SplashPage(),
       );
     },
   };
 }
 
 /// generated route for
-/// [_i1.FullImageScreen]
-class FullImageRoute extends _i4.PageRouteInfo<FullImageRouteArgs> {
+/// [_i1.Bookmarkscreen]
+class Bookmarkscreen extends _i6.PageRouteInfo<void> {
+  const Bookmarkscreen({List<_i6.PageRouteInfo>? children})
+      : super(
+          Bookmarkscreen.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'Bookmarkscreen';
+
+  static const _i6.PageInfo<void> page = _i6.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i2.FullImageScreen]
+class FullImageRoute extends _i6.PageRouteInfo<FullImageRouteArgs> {
   FullImageRoute({
-    _i5.Key? key,
-    required String imageUrl,
-    List<_i4.PageRouteInfo>? children,
+    _i7.Key? key,
+    required _i8.ImageModel image,
+    List<_i6.PageRouteInfo>? children,
   }) : super(
           FullImageRoute.name,
           args: FullImageRouteArgs(
             key: key,
-            imageUrl: imageUrl,
+            image: image,
           ),
           initialChildren: children,
         );
 
   static const String name = 'FullImageRoute';
 
-  static const _i4.PageInfo<FullImageRouteArgs> page =
-      _i4.PageInfo<FullImageRouteArgs>(name);
+  static const _i6.PageInfo<FullImageRouteArgs> page =
+      _i6.PageInfo<FullImageRouteArgs>(name);
 }
 
 class FullImageRouteArgs {
   const FullImageRouteArgs({
     this.key,
-    required this.imageUrl,
+    required this.image,
   });
 
-  final _i5.Key? key;
+  final _i7.Key? key;
 
-  final String imageUrl;
+  final _i8.ImageModel image;
 
   @override
   String toString() {
-    return 'FullImageRouteArgs{key: $key, imageUrl: $imageUrl}';
+    return 'FullImageRouteArgs{key: $key, image: $image}';
   }
 }
 
 /// generated route for
-/// [_i2.HomePage]
-class HomeRoute extends _i4.PageRouteInfo<void> {
-  const HomeRoute({List<_i4.PageRouteInfo>? children})
+/// [_i3.HomePage]
+class HomeRoute extends _i6.PageRouteInfo<void> {
+  const HomeRoute({List<_i6.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
           initialChildren: children,
@@ -96,19 +128,33 @@ class HomeRoute extends _i4.PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
+  static const _i6.PageInfo<void> page = _i6.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i3.Splashpage]
-class Splashpage extends _i4.PageRouteInfo<void> {
-  const Splashpage({List<_i4.PageRouteInfo>? children})
+/// [_i4.PhotoGalleryPage]
+class PhotoGalleryRoute extends _i6.PageRouteInfo<void> {
+  const PhotoGalleryRoute({List<_i6.PageRouteInfo>? children})
       : super(
-          Splashpage.name,
+          PhotoGalleryRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'Splashpage';
+  static const String name = 'PhotoGalleryRoute';
 
-  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
+  static const _i6.PageInfo<void> page = _i6.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i5.SplashPage]
+class SplashRoute extends _i6.PageRouteInfo<void> {
+  const SplashRoute({List<_i6.PageRouteInfo>? children})
+      : super(
+          SplashRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SplashRoute';
+
+  static const _i6.PageInfo<void> page = _i6.PageInfo<void>(name);
 }

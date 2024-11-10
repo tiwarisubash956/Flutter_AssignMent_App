@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterassignmentapp/Configuration/routes/app_router.dart';
+import 'package:flutterassignmentapp/Core/Storage/Secure_storage_helper.dart';
+import 'package:flutterassignmentapp/Features/Pages/BookMarkScreen/BookMarkBloc/Bookmaarkbloc.dart';
 import 'package:flutterassignmentapp/Features/Pages/GalleryScreen/Data/Reposstoryimp/GalleryImageRepoimp.dart';
 import 'package:flutterassignmentapp/Features/Pages/GalleryScreen/Presentation/bloc/gallery_bloc.dart';
 import 'package:flutterassignmentapp/Features/Pages/RepoScreen/Data/DataSource/GitRepoDataSource.dart';
@@ -24,11 +26,12 @@ class MyApp extends StatelessWidget {
     AppRouter appRouter = AppRouter();
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => BookmarkBloc(SecureStorageHelper())),
         BlocProvider(
             create: (context) => GalleryBloc(
                 galleryimagerepoimp: Galleryimagerepoimp(
-                    galleryImageDataSource:
-                        GalleryDataSourceimpl(dio: Dio())))),
+                    galleryImageDataSource: GalleryDataSourceimpl(
+                        storageHelper: SecureStorageHelper(), dio: Dio())))),
         BlocProvider(
             create: (context) => GitRepoListBloc(
                 gitRepo: GitRepoimpl(

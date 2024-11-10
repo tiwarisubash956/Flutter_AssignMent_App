@@ -6,6 +6,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutterassignmentapp/Configuration/routes/app_router.gr.dart';
 import 'package:flutterassignmentapp/Features/Pages/GalleryScreen/Presentation/bloc/gallery_bloc.dart';
 
+@RoutePage()
 class PhotoGalleryPage extends StatefulWidget {
   const PhotoGalleryPage({Key? key}) : super(key: key);
 
@@ -60,7 +61,7 @@ class _PhotoGalleryPageState extends State<PhotoGalleryPage> {
                 final photo = state.images[index];
                 return GestureDetector(
                   onDoubleTap: () {
-                    context.router.push(FullImageRoute(imageUrl: photo.url));
+                    context.router.push(FullImageRoute(image: photo));
                   },
                   child: Card(
                     child: CachedNetworkImage(

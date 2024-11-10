@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'dart:convert';
+
 class ImageModel {
   final String id;
   final String url;
@@ -25,4 +27,15 @@ class ImageModel {
         'url': url,
         'description': description,
       };
+}
+
+List<ImageModel> imageModelFromJson(String str) {
+  final List<dynamic> jsonData = json.decode(str);
+  return jsonData.map((item) => ImageModel.fromJson(item)).toList();
+}
+
+/// Convert List<ImageModel> to JSON string
+String imageModelToJson(List<ImageModel> data) {
+  final List<Map<String, dynamic>> jsonData = data.map((item) => item.toJson()).toList();
+  return json.encode(jsonData);
 }

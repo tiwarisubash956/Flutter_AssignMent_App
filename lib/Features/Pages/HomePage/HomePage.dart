@@ -25,6 +25,13 @@ class _HomePageState extends State<HomePage> {
           "Home Page",
           style: TextStyle(fontSize: 20),
         ),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              
+            },
+            child: Icon(Icons.bookmark))
+        ],
       ),
       body: _Screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
