@@ -1,9 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutterassignmentapp/Features/Pages/RepoScreen/Data/Model/GistModel.dart';
+
+
 
 import 'package:flutterassignmentapp/Features/Pages/RepoScreen/Presentation/bloc/git_repo_list_bloc.dart';
+@RoutePage()
 
 class RepoScreen extends StatefulWidget {
   const RepoScreen({Key? key}) : super(key: key);
