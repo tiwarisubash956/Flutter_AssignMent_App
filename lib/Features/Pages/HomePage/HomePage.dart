@@ -2,6 +2,7 @@
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterassignmentapp/Configuration/routes/app_router.gr.dart';
 import 'package:flutterassignmentapp/Features/Pages/GalleryScreen/Presentation/GalleryScreen.dart';
 import 'package:flutterassignmentapp/Features/Pages/RepoScreen/Presentation/RepoScreen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -27,10 +28,10 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           GestureDetector(
-            onTap: () {
-              
-            },
-            child: Icon(Icons.bookmark))
+              onTap: () {
+                context.router.push(Bookmarkscreen());
+              },
+              child: Icon(Icons.bookmark))
         ],
       ),
       body: _Screens[_selectedIndex],

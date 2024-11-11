@@ -13,6 +13,7 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: FullImageRoute.page),
         AutoRoute(page: SplashRoute.page, initial: true),
         AutoRoute(page: PhotoGalleryRoute.page),
-        AutoRoute(page: RepoRoute.page)
+        AutoRoute(page: RepoRoute.page),
+        AutoRoute(page: Bookmarkscreen.page)
       ];
 }
